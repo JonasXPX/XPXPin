@@ -1,0 +1,5 @@
+DataBase:
+   address: localhost
+   username: minecraft
+   password: ''
+   database: xpxpin

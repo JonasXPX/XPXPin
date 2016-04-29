@@ -29,8 +29,7 @@ public class ManagerPin {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				player.kickPlayer("§c§lATENÇAO! §bseu pin foi gerado §c§lANOTE SEU PIN§b para não perdê-lo\n\n"
-						+ "§bSEU PIN É: §b§l" + pin);
+				player.kickPlayer("§c§lATENÇAO! §bseu pin foi gerado - "+"SEU PIN É: §b§l" + pin+ "\n\n§c§lANOTE SEU PIN§b para não perdê-lo");
 			}
 		}.runTask(XPXPin.getInstance());
 	}
@@ -62,9 +61,8 @@ public class ManagerPin {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				player.kickPlayer("§c§lATENÇAO! §bVOCÊ ALTEROU SUA SENHA USANDO SEU PIN\n\n"
-						+ "§bSUA NOVA SENHA É: §6§l" + password + "\n\n"
-								+ "§c§lAnote se necessário, §baltere sua senha com §l/changepassword");
+				player.kickPlayer("§c§lATENÇAO! §bVOCÊ ALTEROU SUA SENHA - NOVA SENHA: §6§l" + password
+						+  "\n\n" + "§c§lAnote se necessário, §baltere sua senha com §l/changepassword");
 			}
 		}.runTask(XPXPin.getInstance());
 	}

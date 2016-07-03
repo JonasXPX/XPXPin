@@ -44,7 +44,8 @@ public class ManagerPin {
 		
 		try{
 			if(!data.equalsPin(player.getName(), Integer.parseInt(pin))){
-				player.sendMessage("§9[PIN] §bPIN incorreto.");
+				player.sendMessage("§9[PIN] §bPIN incorreto. §c["+ XPXPin.getTentativas(player) + "/5]");
+				XPXPin.registerTentativa(player);
 				return;
 			}
 		}catch(NumberFormatException e){
@@ -56,7 +57,7 @@ public class ManagerPin {
 		int password = r.nextInt(99999999);
 		
 		XPXPin.getInstance().getServer().dispatchCommand(XPXPin.getInstance().getServer().getConsoleSender()
-				, "authme changepassword " + player.getName() + " " + password);
+				, XPXPin.getChangePasswordCommand(player.getName(), Integer.toString(password)));
 
 		new BukkitRunnable() {
 			@Override

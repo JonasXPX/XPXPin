@@ -15,6 +15,10 @@ public class RecuperarPin implements CommandExecutor{
 			sender.sendMessage("§9[PIN] §bUtilize: /recuperarpin <PIN>");
 			return true;
 		}
+		if(XPXPin.isOverTentativa((Player)sender)){
+			sender.sendMessage("§9[PIN] §cVocê excedeu o número de tentativas para recuperar a conta.");
+			return true;
+		}
 		XPXPin.getInstance().getManagerPin().resetPassword((Player)sender, args[0]);
 		return false;
 	}

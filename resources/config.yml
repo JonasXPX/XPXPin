@@ -3,3 +3,5 @@ DataBase:
    username: minecraft
    password: ''
    database: xpxpin
+Sistema:
+   AlterarSenha: 'authme changepassword @player @senha'

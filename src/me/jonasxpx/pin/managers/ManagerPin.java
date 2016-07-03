@@ -50,7 +50,7 @@ public class ManagerPin {
 			}
 		}catch(NumberFormatException e){
 			player.sendMessage("§9[PIN] §bSeu PIN deve conter somente números.");
-			return;
+			return; 
 		}
 		
 		Random r = new Random();

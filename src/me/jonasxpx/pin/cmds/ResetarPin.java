@@ -16,7 +16,7 @@ public class ResetarPin extends ResetPin implements CommandExecutor{
 			if(args.length == 1){
 				putToReset(args[0]);
 				sender.sendMessage("§9[PIN] Jogador " + args[0].toLowerCase() +  " Adicionado ao pré-reset de PIN");
-				return true;
+				return true; 
 			}
 		}
 		if(args.length > 0){

@@ -21,6 +21,6 @@ public class RecuperarPin implements CommandExecutor{
 		}
 		XPXPin.getInstance().getManagerPin().resetPassword((Player)sender, args[0]);
 		return false;
-	}
+	} 
 
 }

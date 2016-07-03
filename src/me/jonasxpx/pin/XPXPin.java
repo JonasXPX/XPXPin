@@ -51,7 +51,7 @@ public class XPXPin extends JavaPlugin{
 	public ManagerPin getManagerPin(){
 		return mp;
 	}
-	
+	 
 	private MSQLConnection loadConfigOfDB(){
 		getLogger().log(Level.INFO, "Carregando dados do banco de dados, e inicializando...");
 		return new MSQLConnection(getConfig().getString("DataBase.address"), getConfig().getString("DataBase.database"), getConfig().getString("DataBase.username"), getConfig().getString("DataBase.password"));

@@ -1,6 +1,10 @@
 package me.jonasxpx.pin.managers;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
+
+import javax.crypto.KeyGenerator;
+import javax.crypto.KeyGeneratorSpi;
 
 import me.jonasxpx.pin.MSQLConnection;
 import me.jonasxpx.pin.XPXPin;
@@ -53,8 +57,7 @@ public class ManagerPin {
 			return; 
 		}
 		
-		Random r = new Random();
-		int password = r.nextInt(99999999);
+		int password = generateKey(0xFFFFFFF, Integer.MAX_VALUE);
 		
 		XPXPin.getInstance().getServer().dispatchCommand(XPXPin.getInstance().getServer().getConsoleSender()
 				, XPXPin.getChangePasswordCommand(player.getName(), Integer.toString(password)));
@@ -78,7 +81,15 @@ public class ManagerPin {
 		
 		data.unregisterPin(player);
 	}
-	
+
+	public static int generateKey(int min, int max){
+		Random r = new Random();
+		int key = r.nextInt(max);
+		if(key < min){
+			key = generateKey(min, max);
+		}
+		return key;
+	}
 }
 
 

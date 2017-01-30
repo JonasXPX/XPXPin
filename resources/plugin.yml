@@ -1,6 +1,6 @@
 name: XPXPin
 main: me.jonasxpx.pin.XPXPin
-version: 0.2b
+version: 0.4b
 commands:
    recuperarpin:
    ativarpin:

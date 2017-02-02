@@ -24,11 +24,12 @@ public class XPXPin extends JavaPlugin{
 	private static ManagerPin mp;
 	private static HashMap<String, Integer> tentativas = new HashMap<>();
 	private static String chPassword = null;
+	public static int maxLength = 0;
+	public static int minLength = 0;
 	
 	@Override
 	public void onEnable() {
-		getConfig().options().copyDefaults(true);
-		saveConfig();
+		load();
 		instance = this;
 		mp = new ManagerPin();
 		getCommand("ativarpin").setExecutor(new AtivarPin());
@@ -37,6 +38,24 @@ public class XPXPin extends JavaPlugin{
 		connection = loadConfigOfDB();
 		chPassword = getConfig().getString("Sistema.AlterarSenha");
 	}
+	
+	private void load(){
+		getConfig().options().copyDefaults(true);
+		if(!getConfig().contains("Key.MinLength")){
+			getConfig().set("Key.MinLength", 10000000);
+			getConfig().options().header("Min Length: 100");
+		}
+		if(!getConfig().contains("Key.ManLength")){
+			getConfig().set("Key.MaxLength", Integer.MAX_VALUE);
+			getConfig().options().header("Max Length: " + Integer.MAX_VALUE);
+		}
+		saveConfig();
+		
+		maxLength = (getConfig().getLong("Key.MaxLength") > Integer.MAX_VALUE ? Integer.MAX_VALUE : getConfig().getInt("Key.MaxLength"));
+		minLength = (getConfig().getInt("Key.MinLength") <= 99 ? 0xFFFFFFF : getConfig().getInt("Key.MinLength"));
+	}
+	
+	
 	
 	public static XPXPin getInstance(){
 		return instance;

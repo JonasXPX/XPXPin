@@ -1,16 +1,12 @@
 package me.jonasxpx.pin.managers;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Random;
-
-import javax.crypto.KeyGenerator;
-import javax.crypto.KeyGeneratorSpi;
-
-import me.jonasxpx.pin.MSQLConnection;
-import me.jonasxpx.pin.XPXPin;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import me.jonasxpx.pin.MSQLConnection;
+import me.jonasxpx.pin.XPXPin;
 
 public class ManagerPin {
 
@@ -57,7 +53,7 @@ public class ManagerPin {
 			return; 
 		}
 		
-		int password = generateKey(0xFFFFFFF, Integer.MAX_VALUE);
+		int password = generateKey(XPXPin.minLength, XPXPin.maxLength);
 		
 		XPXPin.getInstance().getServer().dispatchCommand(XPXPin.getInstance().getServer().getConsoleSender()
 				, XPXPin.getChangePasswordCommand(player.getName(), Integer.toString(password)));
